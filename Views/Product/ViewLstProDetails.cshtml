@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ProductDetails>
+
+@{
+    ViewData["Title"] = "View products";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var pro = ViewBag.pro;
+}
+
+<h1>List product details</h1>
+
+<p>
+    @Html.ActionLink("Thêm biến thể", "AddProducts", "ProductDetail", new { id = @pro.Id })
+</p>
+<table class="table">
+    <thead>
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AvailableQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            Images
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdProduct)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvailableQuantity)
+            </td>
+            <td>
+               @(item.Status ==1?"Còn bán":"Ngưng")
+            </td>
+            <td>
+                <img style="height: 30px" src="@item.ImageUrl"/>
+            </td>
+            <td>
+                @pro.Name
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditProDetails", "ProductDetail", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "DeleteProDetails", "ProductDetail", new { id = item.Id })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

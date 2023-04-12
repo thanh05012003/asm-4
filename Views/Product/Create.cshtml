@@ -1,0 +1,93 @@
+﻿@model ZestWeb.ViewModels.ProductsView
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var typePro = ViewBag.typePro;
+}
+
+<h1>Create</h1>
+
+<h4>ProductsView</h4>
+<hr/>
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<form asp-action="Create" enctype="multipart/form-data" class="row">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="col-6">
+        <div class="form-group">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control"/>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        @*<div class="form-group">
+            <label asp-for="Status" class="control-label"></label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" asp-for="Status" value="1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Còn bán
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" asp-for="Status" value="0">
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Ngưng bán
+                </label>
+            </div>
+        </div>*@
+        <div class="form-group">
+            <label asp-for="Description" class="control-label"></label>
+            <input asp-for="Description" class="form-control"/>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+   
+        <div class="form-group">
+            <label  class="control-label">Type</label>
+            <select asp-for="IdTypeProduct" class="form-select" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+            @foreach (var item in typePro)
+            {
+                <option  value="@item.Id">@item.Name</option>
+            }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Price" class="control-label"></label>
+            <input asp-for="Price" class="form-control"/>
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+            <label asp-for="AvailableQuantity" class="control-label"></label>
+            <input asp-for="AvailableQuantity" class="form-control"/>
+            <span asp-validation-for="AvailableQuantity" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Supplier" class="control-label"></label>
+            <input asp-for="Supplier" class="form-control"/>
+            <span asp-validation-for="Supplier" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Color" class="control-label"></label>
+            <input asp-for="Color" class="form-control"/>
+            <span asp-validation-for="Color" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ImageUrl" class="control-label"></label>
+            <input type="file" name="file" class="form-control"/>
+            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary mt-3"/>
+    </div>
+</form>
+
+
+<div>
+    <a asp-action="ShowListProduct">Back to List</a>
+</div>

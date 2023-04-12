@@ -1,0 +1,111 @@
+﻿@model ZestWeb.ViewModels.TypeProductView
+
+@{
+    ViewData["Title"] = "TypeProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<p>
+    @* <a asp-action="Create">Create New</a>*@
+</p>
+<h1>List Type Product</h1>
+<hr/>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Name
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (Model.lstTypePro != null)
+    {
+        @foreach (var item in Model.lstTypePro)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Edit", "EditTypePro", new {  id=item.Id  }) |*@
+                    @* @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                </td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+
+@if(TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+@if(TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<div class="row">
+    <div class="col-6">
+        <h1> Create</h1>
+        <hr/>
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="TypeProduct">
+                    
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="TypeProduct.Id" class="control-label"></label>
+                        <input disabled="" asp-for="TypeProduct.Id" value="@Guid.NewGuid()" class="form-control"/>
+                        <span asp-validation-for="TypeProduct.Id" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TypeProduct.Name" class="control-label"></label>
+                        <input asp-for="TypeProduct.Name" class="form-control"/>
+                        <span asp-validation-for="TypeProduct.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="submit" value="Create" class="btn btn-primary"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+       @* <h1> Edit</h1>
+        <hr/>
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="TypeProduct">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="TypeProduct.Id" class="control-label"></label>
+                        <input disabled="" asp-for="TypeProduct.Id" value="@Guid.NewGuid()" class="form-control" />
+                        <span asp-validation-for="TypeProduct.Id" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TypeProduct.Name" class="control-label"></label>
+                        <input asp-for="TypeProduct.Name" class="form-control" />
+                        <span asp-validation-for="TypeProduct.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="submit" value="EditTypePro" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>*@
+    </div>
+</div>
+<div>
+    <a asp-action="TypeProduct">Back to List</a>
+</div>
+

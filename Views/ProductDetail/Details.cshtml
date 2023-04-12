@@ -1,0 +1,72 @@
+﻿@model ZestWeb.ViewModels.ProductsView
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div class="container">
+    <h1>Chi tiết sản phẩm</h1>
+    <hr/>
+    <form asp-controller="ProductDetail" asp-action="Details">
+        <input hidden="" asp-for="Id" value="@Model.Id">
+        <input hidden="" asp-for="IdProduct" value="@Model.IdProduct">
+        <input hidden="" asp-for="IdProductDetails" value="@Model.IdProductDetails">
+        <input hidden="" asp-for="IdTypeProduct" value="@Model.IdTypeProduct">
+        <input hidden="" asp-for="Color" value="@Model.Color">
+        <input hidden="" asp-for="Name" value="@Model.Name">
+        <input hidden="" asp-for="Status" value="@Model.Status">
+        <input hidden="" asp-for="TypeProduct" value="@Model.TypeProduct">
+        <input hidden="" asp-for="AvailableQuantity" value="@Model.AvailableQuantity">
+        <input hidden="" asp-for="ImageUrl" value="@Model.ImageUrl">
+        <input hidden="" asp-for="Supplier" value="@Model.Supplier">
+        <div class=" row">
+
+            <div class="col-6">
+                <img class="w-100" src="@Model.ImageUrl" alt=""/>
+            </div>
+
+            <div class="about-content col-6 pl-5">
+                <h2 style="font-size: 50px">@Model.Name</h2>
+                <p>@Model.Description</p>
+                <label>Số Lượng tồn:</label>
+                <p>@Model.AvailableQuantity</p>
+                <label>Giá:</label>
+                <p style="color: red">@Model.Price.ToString("C0")</p>
+
+                <div class="form-group">
+                    <label class="form-label">Số lượng: </label>
+                    <div class="input-group " style="width: 120px; margin-left: 10px">
+
+                        <div class="input-group-prepend">
+                            <a class="btn btn-outline-secondary" type="button" id="minus-btn">-</a>
+                        </div>
+                        <input asp-for="Quantity" style="text-align: center" type="text" class="form-control" value="1" min="1" max="10">
+                        <div class="input-group-append">
+                            <a class="btn btn-outline-secondary " id="plus-btn">+</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group mt-3 ">
+                    <label class="form-label">Phân loại</label>
+                    <button class="btn border-dark ">@Model.Color</button>
+                </div>
+
+                <button asp-action="AddToCart" asp-controller="Cart" class="btn btn-success rounded-pill py-3 px-5 mt-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                         class="bi bi-basket pb-1 pr-1" viewBox="0 0 16 16">
+                        <path
+                            d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/>
+                    </svg>
+                    Thêm vào giỏ hàng
+                </button>
+
+            </div>
+
+        </div>
+    </form>
+</div>
+<div>
+    <a class="btn btn-success mt-4" asp-controller="Product" asp-action="Home">Back to List</a>
+</div>

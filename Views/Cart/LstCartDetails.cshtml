@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ZestWeb.ViewModels.CartsView>
+
+@{
+    ViewData["Title"] = "LstCartDetails";
+}
+
+<h1>Giỏ hàng</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+       
+        <th>
+            Images
+        </th>
+        <th>
+            Order Total
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (Model != null)
+    {
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameProduct)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    <img width="30px" src="@item.ImageUrl"/>
+                </td>
+                <td>
+                   @((item.Price * item.Quantity).ToString("C0"))
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+
+<a asp-action="PlaceOrder" class="btn btn-success">Thanh toán</a>
