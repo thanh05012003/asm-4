@@ -1,4 +1,5 @@
 ﻿using ZestWeb.Models;
+using ZestWeb.ViewModels;
 
 
 namespace ZestWeb.IService
@@ -10,6 +11,7 @@ namespace ZestWeb.IService
         public bool delete(Guid id);
         public Bill getBillById(Guid id);
         public List<Bill> getBillByName(string name);
-        public List<Bill> GetAll();
+        public List<BillView> GetAll();
+        public List<BillView> GetAllBills();
     }
 }

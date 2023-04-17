@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -74,16 +75,14 @@
                     <a asp-controller="Product" asp-action="Home" class="nav-item nav-link ">Home</a>
                     <a  class="nav-item nav-link">About Us</a>
                     <a asp-controller="Product" asp-action="Products" class="nav-item nav-link">Products</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <div  class="nav-item dropdown">
+                        <a  class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu m-0">
-                            <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                            <a href="feature.html" class="dropdown-item">Our Features</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            <a href="404.html" class="dropdown-item">404 Page</a>
+                            <a asp-action="MyPurchase" asp-controller="Bill" class="dropdown-item">Đơn mua</a>
+                            <a asp-action="HoanThanh" asp-controller="Bill" class="dropdown-item">Hoàn thành</a>
+                          
                         </div>
                     </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact Us</a>
                 </div>
                 <div class="d-none d-lg-flex ms-2">
                     <a class="btn-sm-square bg-white rounded-circle ms-3" href="">

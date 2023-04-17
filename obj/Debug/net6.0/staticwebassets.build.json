@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "AlOzz3DFGk83Gc0TOfH5NG1n+KuKzRZ9sVq0NzFI204=",
+  "Hash": "nBBLnil01uhu8oe3wj1PCjUECBU+brlvbiRLE0kWMOA=",
   "Source": "ZestWeb",
   "BasePath": "_content/ZestWeb",
   "Mode": "Default",
@@ -7342,6 +7342,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\forms\\Readme.txt"
+    },
+    {
+      "Identity": "C:\\Users\\ADMIN\\Desktop\\HocC#\\ShoppingWebb\\ZestWeb\\wwwroot\\img\\0000201284957_01_de.jpg",
+      "SourceId": "ZestWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ADMIN\\Desktop\\HocC#\\ShoppingWebb\\ZestWeb\\wwwroot\\",
+      "BasePath": "_content/ZestWeb",
+      "RelativePath": "img/0000201284957_01_de.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\0000201284957_01_de.jpg"
     },
     {
       "Identity": "C:\\Users\\ADMIN\\Desktop\\HocC#\\ShoppingWebb\\ZestWeb\\wwwroot\\img\\0a03f03dc3ec4994d390c037578e5b76.jpg",

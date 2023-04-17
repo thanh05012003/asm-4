@@ -2,6 +2,8 @@
 
 @{
     ViewData["Title"] = "LstCartDetails";
+    int total = 0;
+    int allTotal = 0;
 }
 
 <h1>Giỏ hàng</h1>
@@ -48,15 +50,23 @@
                     <img width="30px" src="@item.ImageUrl"/>
                 </td>
                 <td>
-                   @((item.Price * item.Quantity).ToString("C0"))
+                   
+                    @{
+                        total = item.Price * item.Quantity;
+                        allTotal += total;
+                    }
+                    @((total).ToString("C0"))
                 </td>
                 <td>
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Delete", "DeleteCart",  item)
                 </td>
             </tr>
         }
+        <th>Order total: </th>
+        <td>@allTotal.ToString("C0")</td>
+      
     }
     </tbody>
 </table>
 
-<a asp-action="PlaceOrder" class="btn btn-success">Thanh toán</a>
+<a asp-action="CheckOut" class="btn btn-success">Thanh toán</a>

@@ -20,7 +20,8 @@ namespace ZestWeb.Service
                 {
                     IdProductDetails = b.IdProductDetails,
                     IdCart = b.IdCart,
-                   Quantity = b.Quantity
+                   Quantity = b.Quantity,
+                   Status = b.Status
                 };
                 _context.CartDetails.Add(carteDetails);
                 _context.SaveChanges();
@@ -39,6 +40,7 @@ namespace ZestWeb.Service
                 var carDt = _context.CartDetails.FirstOrDefault(c =>
                     c.IdCart == b.IdCart && c.IdProductDetails == b.IdProductDetails);
                carDt.Quantity = b.Quantity;
+               carDt.Status = b.Status;
                 _context.CartDetails.Update(carDt);
                 _context.SaveChanges();
                 return true;
@@ -47,9 +49,18 @@ namespace ZestWeb.Service
             return false;
         }
 
-        public bool delete(Guid id)
+        public bool delete(CartsView b)
         {
-            throw new NotImplementedException();
+            if (b != null)
+            {
+                var carDt = _context.CartDetails.FirstOrDefault(c =>
+                    c.IdCart == b.IdCart && c.IdProductDetails == b.IdProductDetails);
+                _context.CartDetails.Remove(carDt);
+                _context.SaveChanges();
+                return true;
+            }
+
+            return false;
         }
 
         public CartDetails getCartDetailsById(Guid id)
@@ -77,7 +88,8 @@ namespace ZestWeb.Service
                     UserId = b.UserId,
                     NameProduct = d.Name,
                     ImageUrl = c.ImageUrl,
-                    Price = c.Price
+                    Price = c.Price,
+                    Status = a.Status,
                 };
            return cartdetail.ToList();
         }

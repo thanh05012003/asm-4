@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ZestWeb.ViewModels.BillView>
+
+@{
+    ViewData["Title"] = "MyPurchase";
+}
+
+<h1>Đơn mua</h1>
+
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+               
+                <td>
+                    @(item.CreateDate.ToString("d"))
+                </td>
+                <td>
+                    @(item.Status == 0 ? "Đang vận chuyển" : "Hoàn thành")
+                </td>
+                <td>
+                    @(item.Price)
+                </td>
+               
+                <td>
+                @Html.ActionLink("Đã nhận được hàng", "BillSucces", new {  id=item.IdBill  })
+              
+            </td>
+               
+            </tr>
+        }
+      @*  <tr>
+            <a class="btn btn btn-success">Đã nhận được hàng</a>
+        </tr>*@
+        </tbody>
+       
+    </table>
+}

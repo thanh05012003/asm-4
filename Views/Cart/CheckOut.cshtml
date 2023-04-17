@@ -1,99 +1,108 @@
 ﻿@model ZestWeb.ViewModels.PlaceOrderView
 @{
     ViewData["Title"] = "PlaceOrder";
+    var total = 0;
+    var allTotal = 0;
 }
 
 <h1>PlaceOrder</h1>
+@if (Model != null)
+{
+    <section class="h-100 h-custom" style="background-color: #eee;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-8 col-xl-6">
+                    <div class="card border-top border-bottom border-3" style="border-color: #f37a27 !important;">
+                        <div class="card-body p-5">
 
-<section class="h-100 h-custom" style="background-color: #eee;">
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-lg-8 col-xl-6">
-                <div class="card border-top border-bottom border-3" style="border-color: #f37a27 !important;">
-                    <div class="card-body p-5">
+                            <p class="lead fw-bold mb-5" style="color: #f37a27;">Place order</p>
 
-                        <p class="lead fw-bold mb-5" style="color: #f37a27;">Place order</p>
-
-                        <div class="row">
-                            <div class="col mb-3">
-                                <p class="small text-muted mb-1">Date</p>
-                                <p>@DateTime.Now</p>
+                            <div class="row">
+                                <div class="col mb-3">
+                                    <p class="small text-muted mb-1">Date</p>
+                                    <p>@DateTime.Now</p>
+                                </div>
+                                <div class="col mb-3">
+                                    <p>@Model.User.Name</p>
+                                    <p> @Model.User.Phone</p>
+                                </div>
+                                <div class="col mb-3">
+                                    <p>@Model.User.Address</p>
+                                </div>
                             </div>
-                            <div class="col mb-3">
-                                <p>@Model.User.Name</p>
-                                <p> @Model.User.Phone</p>
-                            </div>
-                            <div class="col mb-3">
-                                <p>@Model.User.Address</p>
-                            </div>
-                        </div>
 
-                        <div class="mx-n5 px-5 py-4" style="background-color: #f2f2f2;">
-                            @if (@Model.CartsView != null)
-                            {
-                                @foreach (var it in @Model.CartsView)
+                            <div class="mx-n5 px-5 py-4" style="background-color: #f2f2f2;">
+                                @if (@Model.CartsView != null)
                                 {
-                                    <div class="row">
-                                        <div class="col-md-8 col-lg-7">
-                                            <p>@it.NameProduct</p>
+                                    @foreach (var it in @Model.CartsView)
+                                    {
+                                        <div class="row">
+                                            <div class="col-md-8 col-lg-7">
+                                                <p>@it.NameProduct</p>
+                                            </div>
+                                            <div class="col-md-4 col-lg-5">
+                                                <img width="30px" src="@it.ImageUrl"/>
+                                                <p>
+                                                    @{
+                                                        total = it.Price * it.Quantity;
+                                                        allTotal += total;
+                                                    }
+                                                    @(total.ToString("C0"))
+                                                </p>
+                                            </div>
                                         </div>
-                                        <div class="col-md-4 col-lg-5">
-                                            <img width="30px" src="@it.ImageUrl"/>
-                                            <p>@((it.Price * it.Quantity).ToString("C0")) </p>
-                                        </div>
-                                    </div>
+                                    }
                                 }
-                            }
-                        </div>
-
-                        <div class="row my-4">
-
-                            <div class="col-md-4 offset-md-8 col-lg-3 offset-lg-9">
-                                <p>Order Total:</p>
-                                <p class="lead fw-bold mb-0" style="color: #f37a27;">£262.99</p>
                             </div>
-                        </div>
 
-                        <p class="lead fw-bold mb-4 pb-2" style="color: #f37a27;">Tracking Order</p>
+                            <div class="my-4">
+                                <div class="row">
+                                    <p>Order Total:</p>
+                                    <p class="lead fw-bold mb-0" style="color: #f37a27;">@allTotal.ToString("C0")</p>
+                                </div>
+                            </div>
 
-                        <div class="row">
-                            <div class="col-lg-12">
+                            <p class="lead fw-bold mb-4 pb-2" style="color: #f37a27;">Tracking Order</p>
 
-                                <div class="horizontal-timeline">
+                            <div class="row">
+                                <div class="col-lg-12">
 
-                                    <ul class="list-inline items d-flex justify-content-between">
-                                        <li class="list-inline-item items-list">
-                                            <p class="py-1 px-2 rounded text-white" style="background-color: #f37a27;">Ordered</p>
-                                        </li>
-                                        <li class="list-inline-item items-list">
-                                            <p class="py-1 px-2 rounded text-white" style="background-color: #f37a27;">Shipped</p>
-                                        </li>
-                                        <li class="list-inline-item items-list">
-                                            <p class="py-1 px-2 rounded text-white" style="background-color: #f37a27;">
-                                                On the way
-                                            </p>
-                                        </li>
-                                        <li class="list-inline-item items-list text-end" style="margin-right: 8px;">
-                                            <p style="margin-right: -8px;">Delivered</p>
-                                        </li>
-                                    </ul>
+                                    <div class="horizontal-timeline">
+
+                                      @*  <ul class="list-inline items d-flex justify-content-between">
+                                            <li class="list-inline-item items-list">
+                                                <p class="py-1 px-2 rounded text-white" style="background-color: #f37a27;">Ordered</p>
+                                            </li>
+                                            <li class="list-inline-item items-list">
+                                                <p class="py-1 px-2 rounded text-white" style="background-color: #f37a27;">Shipped</p>
+                                            </li>
+                                            <li class="list-inline-item items-list">
+                                                <p class="py-1 px-2 rounded text-white" style="background-color: #f37a27;">
+                                                    On the way
+                                                </p>
+                                            </li>
+                                            <li class="list-inline-item items-list text-end" style="margin-right: 8px;">
+                                                <p style="margin-right: -8px;">Delivered</p>
+                                            </li>
+                                        </ul>*@
+
+                                    </div>
 
                                 </div>
-
                             </div>
-                        </div>
-                        <a asp-action="CheckOut" class="py-1 col-lg-8 px-2 rounded text-white" style="background-color: #f37a27;">Place Order</a>
-                        <p class="mt-4 pt-2 mb-0">
-                            Want any help?
-                            <a href="#!" style="color: #f37a27;">
-                                Please contact
-                                us
-                            </a>
-                        </p>
+                            <a asp-action="PlaceOrder" class="py-1 col-lg-8 px-2 rounded text-white" style="background-color: #f37a27;">Place Order</a>
+                            <p class="mt-4 pt-2 mb-0">
+                                Want any help?
+                                <a href="#!" style="color: #f37a27;">
+                                    Please contact
+                                    us
+                                </a>
+                            </p>
 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+}

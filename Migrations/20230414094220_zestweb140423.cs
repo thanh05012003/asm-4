@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ZestWeb.Migrations
 {
-    public partial class ZestWeb123 : Migration
+    public partial class zestweb140423 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -174,7 +174,8 @@ namespace ZestWeb.Migrations
                 {
                     IdCart = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IdProductDetails = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false)
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

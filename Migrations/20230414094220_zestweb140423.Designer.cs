@@ -12,8 +12,8 @@ using ZestWeb.Context;
 namespace ZestWeb.Migrations
 {
     [DbContext(typeof(AsmDbContext))]
-    [Migration("20230409115031_ZestWeb123")]
-    partial class ZestWeb123
+    [Migration("20230414094220_zestweb140423")]
+    partial class zestweb140423
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -96,6 +96,9 @@ namespace ZestWeb.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.HasKey("IdCart", "IdProductDetails");
