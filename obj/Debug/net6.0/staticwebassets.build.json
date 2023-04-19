@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nBBLnil01uhu8oe3wj1PCjUECBU+brlvbiRLE0kWMOA=",
+  "Hash": "4RG3inAuEWvUfDh1iicx0l+2gRqnUarVMYUuHYR2bPw=",
   "Source": "ZestWeb",
   "BasePath": "_content/ZestWeb",
   "Mode": "Default",
@@ -7920,6 +7920,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\Ellipse 7.png"
+    },
+    {
+      "Identity": "C:\\Users\\ADMIN\\Desktop\\HocC#\\ShoppingWebb\\ZestWeb\\wwwroot\\img\\gi_y_nike_jordan_tr_ng_full_01.jpg",
+      "SourceId": "ZestWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ADMIN\\Desktop\\HocC#\\ShoppingWebb\\ZestWeb\\wwwroot\\",
+      "BasePath": "_content/ZestWeb",
+      "RelativePath": "img/gi_y_nike_jordan_tr_ng_full_01.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\gi_y_nike_jordan_tr_ng_full_01.jpg"
     },
     {
       "Identity": "C:\\Users\\ADMIN\\Desktop\\HocC#\\ShoppingWebb\\ZestWeb\\wwwroot\\img\\icon-1.png",

@@ -45,8 +45,11 @@ public class CartController : Controller
         var idUser = HttpContext.Session.GetString("UserId"); // lấy userId từ session khi login thành công
         if (idUser == null) return RedirectToAction("Login", "Login");
         foreach (var t in _cartService.GetAll())
-            if (idUser == t.UserId.ToString()) //  nếu userId tồn tại trong giỏ hàng
-                foreach (var a in _cartDetailsService.GetAll().Where(c => c.UserId == Guid.Parse(idUser)))
+            if (idUser == t.UserId.ToString())
+            {
+                //  nếu userId tồn tại trong giỏ hàng
+                foreach (var a in _cartDetailsService.GetAll())
+                {
                     if (pro.IdProductDetails == a.IdProductDetails) // cộng thêm số lượng nếu tồn tại
                     {
                         _cartDetailsService.update(new CartsView()
@@ -56,9 +59,13 @@ public class CartController : Controller
                             Status = 1,
                             Quantity = a.Quantity + pro.Quantity //Cộng số lượng
                         });
-                        return RedirectToAction("Home", "Product");
+                        return RedirectToAction("LstCartDetails", "Cart");
                     }
-                    else
+                }
+
+                foreach (var b in _cartDetailsService.GetAll())
+                {
+                    if (b.IdProductDetails != pro.IdProductDetails)
                     {
                         _cartDetailsService.add(new CartsView()
                         {
@@ -67,8 +74,11 @@ public class CartController : Controller
                             Status = 1,
                             Quantity = pro.Quantity
                         });
-                        return RedirectToAction("Home", "Product");
+                        return RedirectToAction("LstCartDetails", "Cart");
                     }
+                }
+                
+            }
 
         var cart = new Cart() // tạo mới giỏ hàng 
         {
